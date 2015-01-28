@@ -82,3 +82,34 @@ Proof.
 
   apply le_n.
 Qed.
+
+Theorem plus_id_example : forall (n m : nat), n = m -> n + n = m + m.
+Proof.
+  intros n m.
+  intros H.
+  rewrite -> H.
+  reflexivity.
+Qed.
+
+Theorem plus_id_exercise : forall (n m o : nat), n = m -> m = o -> n + m = m + o.
+Proof.
+  intros n m o.
+  intros H.
+  intros G.
+  rewrite -> H.
+  rewrite <- G.
+  reflexivity.
+Qed.
+
+Theorem test_locical : forall (p : Prop), (False /\ p) <-> False.
+Proof.
+  intros p.
+  split.
+
+  intros H.
+  destruct H.
+  contradict H.
+
+  intros H.
+  contradict H.
+Qed.
