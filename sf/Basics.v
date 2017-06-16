@@ -69,7 +69,6 @@ Fixpoint leb (n m : nat) : bool :=
       end
   end.
 
-
 Definition blt_nat (n m : nat) : bool :=
   leb n m && negb (beq_nat n m)
 .
@@ -97,6 +96,13 @@ Proof.
   rewrite H.
   reflexivity.
 Qed.
+
+Theorem negb_involutive : forall b : bool,
+  negb (negb b) = b.
+Proof.
+  intros b. destruct b.
+  - reflexivity.
+  - reflexivity. Qed.
 
 Theorem andb_true_elim2 : forall b c : bool,
   andb b c = true -> c = true.
@@ -133,9 +139,7 @@ Theorem negation_fn_applied_twice :
 Proof.
   intros f H b.
   rewrite H, H.
-  destruct b.
-  { simpl. reflexivity. }
-  { simpl. reflexivity. }
+  apply negb_involutive.
 Qed.
 
 Theorem andb_eq_orb :
