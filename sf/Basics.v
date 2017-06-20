@@ -37,6 +37,8 @@ Fixpoint evenb (n:nat) : bool :=
   | S (S n') => evenb n'
   end.
 
+Definition oddb (n:nat) : bool := negb (evenb n).
+
 Fixpoint factorial (n:nat) : nat := match n with
   | 0 => 1
   | S m => n * factorial m

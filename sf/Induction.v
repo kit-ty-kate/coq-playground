@@ -1,7 +1,6 @@
 (* https://softwarefoundations.cis.upenn.edu/current/Induction.html *)
 
 Require Export Basics.
-Require Coq.Setoids.Setoid.
 
 Theorem plus_n_O : forall n:nat, n = n + 0.
 Proof.
